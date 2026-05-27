@@ -3,7 +3,11 @@ export const AttendanceTeam = {
     Loans: 1,
     Others: 2
 } as const;
-
+export const AttendanceTeamNames = {
+    [AttendanceTeam.Cards]: "Cartões",
+    [AttendanceTeam.Loans]: "Empréstimos",
+    [AttendanceTeam.Others]: "Outros"
+};
 export type AttendanceTeam = typeof AttendanceTeam[keyof typeof AttendanceTeam];
 
 export const AttendanceStatus = {
@@ -11,5 +15,11 @@ export const AttendanceStatus = {
     Waiting: 1,
     Completed: 2
 } as const;
+
+export const AttendanceStatusNames = {
+    [AttendanceStatus.InProgress]: "Na fila",
+    [AttendanceStatus.Waiting]: "Aguardando",
+    [AttendanceStatus.Completed]: "Finalizado"
+};
 
 export type AttendanceStatus = typeof AttendanceStatus[keyof typeof AttendanceStatus];
