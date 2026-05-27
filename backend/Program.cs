@@ -11,19 +11,23 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(policy =>
         policy.WithOrigins("http://localhost:5173", "http://localhost:5174", "http://localhost:5254", "http://localhost:80")
               .AllowAnyHeader()
-              .AllowAnyMethod());
+              .AllowAnyMethod()
+              .AllowCredentials() 
+);
+
 });
 
 builder.Services.AddSingleton<DistributionService>();
 builder.Services.AddSignalR();
 
 var app = builder.Build();
-app.MapHub<AttendanceHub>("/hubs/attendance");
 
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseCors();
+app.MapHub<AttendanceHub>("/hubs/attendance");
+
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

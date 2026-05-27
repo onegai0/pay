@@ -1,26 +1,10 @@
-import { useEffect } from 'react';
 import './App.css'
-import { attendanceService } from './services/attendanceService';
-import {attendantService} from './services/attendanceService';
 
 
+import  {Dashboard} from './pages/Dashboard';
 
 function App() {
-
-useEffect(() => {
-    attendantService.getAll().then(console.log).catch(console.error);
-    attendanceService.getAll().then(console.log).catch(console.error);
-}, []); 
-
-
-  return (
-    <>
-    <div>a</div>
-
-
-
-    </>
-  )
+    return <Dashboard />;
 }
 
-export default App
+export default App;
