@@ -6,7 +6,8 @@
   ],
   
   "compilerOptions": {
-    "noUnusedLocals": false
+    "noUnusedLocals": false,
+    "erasableSyntaxOnly": false
   }
 
 
