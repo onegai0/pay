@@ -7,6 +7,7 @@ import type { IAttendant } from '../interfaces/IAttendant';
 import type { IAttendance } from '../interfaces/IAttendance';
 import { AttendanceStatus, AttendanceStatusNames, AttendanceTeam, AttendanceTeamNames } from "../interfaces/Enum";
 import { TeamPanel } from '../components/TeamPanel';
+import { QueuePanel } from '../components/QueuePanel';
 
 export function Dashboard() {
 
@@ -30,8 +31,8 @@ export function Dashboard() {
         <div className=" flex flex-col  items-center w-full h-full">
             <div className={wrapType}>
                 {statusKeys.map((status) => (
-                    <div key={status} className='flex-1 min-w-[350px] max-w-[600px]'>
-                        <TeamPanel type={AttendanceStatusNames[status]} />
+                    <div key={status} className=' min-w-[180px] h-30 max-w-[300px]'>
+                        <QueuePanel type={AttendanceStatusNames[status]} />
                     </div>
                 ))}
             </div>

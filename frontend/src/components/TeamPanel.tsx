@@ -10,7 +10,7 @@ export function TeamPanel({ type }: TeamPanelProps) {
             <h2 className="text-xl font-bold mb-4   flex justify-center"> {type}</h2>
 
             {[1, 2, 3].map((item) => (
-                <div key={item} className="w-full h-16 bg-[#2A2A2A] rounded mb-3 flex items-center px-4">
+                <div key={item} className="w-full h-16 bg-[#2A2A2A] rounded my-3 flex items-center px-4">
                     <div className="w-10 h-10 bg-gray-500 rounded-full mr-4"></div>
                     <div className="text-white">Atendente {item}</div>
                 </div>
