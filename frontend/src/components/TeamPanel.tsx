@@ -47,9 +47,11 @@ export function TeamPanel({ type, attendants, attendances }: TeamPanelProps) {
 
             <div className="flex  overflow-y-auto max-h-[180px] custom-scroll ">
                 <div className="flex w-[97%] flex-col gap-2">
-                    {attendants.map((item) => (
-                        <AttendantCard key={item.id} name={item.name} attendances={item.activeAttendances.length} />
-                    ))}
+                    {[...attendants]
+                        .sort((a, b) => b.activeAttendances.length - a.activeAttendances.length)
+                        .map((item) => (
+                            <AttendantCard key={item.id} name={item.name} attendances={item.activeAttendances.length} />
+                        ))}
                 </div>
             </div>
         </div>
