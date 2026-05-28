@@ -73,7 +73,7 @@ O frontend sobe em `http://localhost:5173`.
 
 O dashboard tem design minimalista com fundo desfocado, painéis translúcidos e paleta escura. É totalmente responsivo — em telas menores o grid de times se reorganiza em duas colunas, e colunas secundárias da tabela de histórico (atendente, categoria) são ocultadas para preservar a leitura.
 
-![Logo](images/01.png)
+![Preview](images/01.png)
 
 ## Decisões de design
 
