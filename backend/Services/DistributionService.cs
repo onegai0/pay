@@ -2,12 +2,12 @@ using Microsoft.AspNetCore.SignalR;
 
 public class DistributionService
 {
-	private static List<Attendant> _attendants = new();
-	private static List<Attendance> _attendances = new();
-	private static Queue<Attendance> _cardsQueue = new();
-	private static Queue<Attendance> _loansQueue = new();
-	private static Queue<Attendance> _othersQueue = new();
-	private static int _nextId = 1;
+	private List<Attendant> _attendants = new();
+	private List<Attendance> _attendances = new();
+	private Queue<Attendance> _cardsQueue = new();
+	private Queue<Attendance> _loansQueue = new();
+	private Queue<Attendance> _othersQueue = new();
+	private int _nextId = 1;
 
 
 	private readonly IHubContext<AttendanceHub> _hub;

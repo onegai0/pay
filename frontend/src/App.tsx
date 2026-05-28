@@ -24,10 +24,10 @@ function App() {
       <header className="fixed top-0 z-50 flex  items-center justify-between w-full h-16 px-8 bg-[#00000081] backdrop-blur-[10px]">
         <a href="/" className="flex items-center gap-1 text-[28px] text-white">
           <h1 className="flex">
-            <span className="font-bold text-white/80">Flow</span>
+            <span className="font-bold text-white/90">Flow</span>
             <span className={` font-thin ${isConnected ? "text-[#00ff22]" : "text-[#ff0000]"}`}>Pay</span>
           </h1>
-          <div className="font-bold text-white/80">Central</div>
+          <div className="font-bold text-white/90">Central</div>
         </a>
 
         <div className="flex gap-2">
