@@ -1,66 +1,57 @@
 
-import { useCallback, useState } from 'react';
-import { attendanceService } from '../services/attendanceService';
-import { attendantService } from '../services/attendanceService';
-import { useSignalR } from '../hooks/useSignalR';
-import type { IAttendant } from '../interfaces/IAttendant';
-import type { IAttendance } from '../interfaces/IAttendance';
-import { AttendanceStatus, AttendanceStatusNames, AttendanceTeam, AttendanceTeamNames } from "../interfaces/Enum";
+import { useAttendance } from '../hooks/useSignalR';
+import { AttendanceStatus, AttendanceTeam } from "../interfaces/Enum";
 import { TeamPanel } from '../components/TeamPanel';
 import { QueuePanel } from '../components/QueuePanel';
+import { ActivityPanel } from '../components/ActivityPanel';
 
 export function Dashboard() {
+    const { attendances, attendants } = useAttendance();
 
 
-    const [attendances, setAttendances] = useState<IAttendance[]>([]);
-    const [attendants, setAttendants] = useState<IAttendant[]>([]);
-
-    const fetchData = useCallback(() => {
-        attendanceService.getAll().then(setAttendances);
-        attendantService.getAll().then(setAttendants);
-    }, []);
-
-    useSignalR(fetchData);
-    const buttonClass =
-        "mt-5 px-4 py-2 bg-gray-800 text-white rounded hover:bg-blue-600";
-
-    const wrapType = "flex flex-wrap justify-center gap-5 pt-5 px-5";
     const teamKeys = Object.values(AttendanceTeam) as AttendanceTeam[];
     const statusKeys = Object.values(AttendanceStatus) as AttendanceStatus[];
     return (
-        <div className=" flex flex-col  items-center w-full h-full">
-            <div className={wrapType}>
-                {statusKeys.map((status) => (
-                    <div key={status} className=' min-w-[180px] h-30 max-w-[300px]'>
-                        <QueuePanel type={AttendanceStatusNames[status]} />
+        <div className=" flex flex-col gap-5 items-center w-full h-full pt-2 overflow-auto ">
+
+
+
+            <div className="w-full justify-center  items-center  rounded-lg px-5   flex-col ">
+
+                <div className="w-full flex justify-center    ">
+
+                    <div className={" grid grid-cols-2 md:grid-cols-4 mxn-w-[1092px]   py-5 justify-center gap-5 "}>
+                        <div className='w-[150px] h-25'>
+                            <QueuePanel list={attendances} />
+                        </div>
+
+                        {statusKeys.map((status) => (
+                            <div key={status} className='w-[150px] h-25'>
+                                <QueuePanel type={status} list={attendances} />
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
+                </div>
 
-            <div>
+                <div className="flex flex-wrap w-full justify-center items-start gap-5">
 
-                <div className={wrapType}>
                     {teamKeys.map((team) => (
-                        <div key={team} className='flex-1 min-w-[350px] max-w-[600px]'>
-                            <TeamPanel type={AttendanceTeamNames[team]} />
+                        <div key={team} className='w-[350px]'>
+                            <TeamPanel
+                                type={team}
+                                attendants={attendants.filter(a => a.team === team)}
+                                attendances={attendances.filter(a => a.team === team)}
+                            />
                         </div>
                     ))}
                 </div>
 
-                <div className=" flex justify-end px-5 gap-5">
-                    <button
-                        onClick={fetchData}
-                        className={buttonClass}
-                    >
-                        Novo Atendente
-                    </button>
-                    <button
-                        onClick={fetchData}
-                        className={buttonClass}
-                    >
-                        Novo Atendimento
-                    </button>
+                <div className=" w-full flex">
+                    <div className=" mx-auto  w-[1092px] h-full pt-5">
+                        <ActivityPanel attendances={attendances} attendants={attendants} />
+                    </div>
                 </div>
+
             </div>
         </div>
     )

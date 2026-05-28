@@ -1,9 +1,13 @@
 @import "tailwindcss";
-
+@layer base {
+  * {
+    @apply select-none;
+  }
+}
 :root {
   --text: #9ca3af;
   --text-h: #f3f4f6;
-  --bg: #142630;
+  --bg: #0d2224;
   --border: #1e2e38;
   --code-bg: #111f27;
   --accent: #81f066;
@@ -33,7 +37,7 @@
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
-  background-color: #4b5563;
+  background-color: #797979;
   border-radius: 999px;
 }
 
