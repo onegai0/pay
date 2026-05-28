@@ -18,8 +18,8 @@ export const AttendanceStatus = {
 
 export const AttendanceStatusNames = {
     [AttendanceStatus.InProgress]: "Na fila",
-    [AttendanceStatus.Waiting]: "Aguardando",
-    [AttendanceStatus.Completed]: "Finalizado"
+    [AttendanceStatus.Waiting]: "Em processo",
+    [AttendanceStatus.Completed]: "Finalizados"
 };
 
 export type AttendanceStatus = typeof AttendanceStatus[keyof typeof AttendanceStatus];
