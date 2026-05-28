@@ -69,6 +69,10 @@ O frontend sobe em `http://localhost:5173`.
         └── services/       # attendanceService, attendantService
 ```
 
+## Interface
+
+O dashboard tem design minimalista com fundo desfocado, painéis translúcidos e paleta escura. É totalmente responsivo — em telas menores o grid de times se reorganiza em duas colunas, e colunas secundárias da tabela de histórico (atendente, categoria) são ocultadas para preservar a leitura.
+
 ## Decisões de design
 
 **Distribuição automática:** o `DistributionService` é registrado como Singleton e centraliza toda a lógica de estado — atendentes, atendimentos e filas por time. Ao criar um atendimento, tenta distribuir imediatamente; se não há atendente disponível, enfileira. Ao completar um atendimento, o próximo da fila é distribuído automaticamente.
