@@ -77,8 +77,6 @@ O dashboard tem design minimalista com fundo desfocado, painéis translúcidos e
 ![Preview](images/1.png)
 ![Preview](images/2.png)
 ![Preview](images/3.png)
-![Preview](images/4.png)
-![Preview](images/5.png)
 
 ## Decisões de design
 
