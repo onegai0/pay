@@ -33,7 +33,7 @@ export function ActivityPanel({ attendances, attendants }: ActivityPanelProps) {
                     </thead>
                 </table>
 
-                <div className="overflow-y-auto h-[255px] custom-scroll">
+                <div className="overflow-y-auto h-[230px] custom-scroll">
                     <table className="w-full text-sm table-fixed">
                         <tbody>
                             {[...attendances]
