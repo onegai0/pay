@@ -6,6 +6,8 @@ Sistema de distribuição e monitoramento de atendimentos em tempo real, desenvo
 
 O FlowPay Central simula uma central de atendimento bancário com três times (Cartões, Empréstimos e Outros). Atendimentos são criados e distribuídos automaticamente para atendentes disponíveis. Quando todos estão ocupados, o atendimento entra em fila e é distribuído assim que um atendente fica livre. Todas as atualizações são refletidas em tempo real para todos os clientes conectados.
 
+![Preview](images/1.png)
+
 ## Funcionalidades
 
 - Distribuição automática de atendimentos por time
