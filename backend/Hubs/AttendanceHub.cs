@@ -6,4 +6,10 @@ public class AttendanceHub : Hub
 	{
 		await Clients.All.SendAsync("AttendanceUpdated");
 	}
+
+	public override async Task OnConnectedAsync()
+	{
+		await Clients.Caller.SendAsync("AttendanceUpdated");
+		await base.OnConnectedAsync();
+	}
 }

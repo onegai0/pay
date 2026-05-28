@@ -19,6 +19,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddSingleton<DistributionService>();
 builder.Services.AddSignalR();
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
@@ -26,6 +27,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseCors();
+app.MapHealthChecks("/health");
 app.MapHub<AttendanceHub>("/hubs/attendance");
 
 app.UseHttpsRedirection();

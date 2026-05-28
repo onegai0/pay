@@ -28,9 +28,9 @@ public class AttendantsController : ControllerBase
 	}
 
 	[HttpDelete("{id}")]
-	public IActionResult Delete(int id)
+	public async Task <IActionResult> Delete(int id)
 	{
-		_service.RemoveAttendant(id);
+		await _service.RemoveAttendant(id);
 		return NoContent();
 	}
 }

@@ -19,16 +19,35 @@ public class DistributionService
 
 	public List<Attendant> GetAllAttendants() => _attendants;
 
-	public Attendant AddAttendant(Attendant attendant)
+	public async Task<Attendant> AddAttendant(Attendant attendant)
 	{
 		attendant.Id = _nextId++;
 		_attendants.Add(attendant);
+
+		while (attendant.IsAvailable)
+		{
+			var queue = GetQueue(attendant.Team);
+			if (queue.Count == 0) break;
+			var next = queue.Dequeue();
+			TryDistribute(next);
+		}
+
+		await _hub.Clients.All.SendAsync("AttendanceUpdated");
 		return attendant;
 	}
 
-	public void RemoveAttendant(int id)
+	private Queue<Attendance> GetQueue(AttendanceTeam team) => team switch
+	{
+		AttendanceTeam.Cards => _cardsQueue,
+		AttendanceTeam.Loans => _loansQueue,
+		_ => _othersQueue
+	};
+
+	public async Task RemoveAttendant(int id)
 	{
 		_attendants.RemoveAll(a => a.Id == id);
+		await _hub.Clients.All.SendAsync("AttendanceUpdated");
+
 	}
 
 
@@ -47,6 +66,8 @@ public class DistributionService
 		await _hub.Clients.All.SendAsync("AttendanceUpdated");
 		return attendance;
 	}
+
+
 
 	public async Task<Attendance> CompleteAttendance(int id)
 	{
