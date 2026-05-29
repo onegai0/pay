@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { IAttendance } from '../interfaces/IAttendance';
 import type { IAttendant } from '../interfaces/IAttendant';
 
-const api = axios.create({ baseURL: import.meta.env.VITE_API_URL ?? 'https://localhost:5254', headers: { "Content-Type": "application/json" } });
+const api = axios.create({ baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:5254', headers: { "Content-Type": "application/json" } });
 
 api.interceptors.response.use(
     res => res,

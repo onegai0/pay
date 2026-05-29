@@ -11,7 +11,7 @@ export function useSignalR(hubPath: string, queryKeys: string[][]) {
         let isCancelled = false;
 
         const connection = new signalR.HubConnectionBuilder()
-            .withUrl(`${import.meta.env.VITE_API_URL ?? "https://localhost:5254"}${hubPath}`)
+            .withUrl(`${import.meta.env.VITE_API_URL ?? "http://localhost:5254"}${hubPath}`)
             .withAutomaticReconnect()
             .configureLogging(signalR.LogLevel.None) 
             .build();
